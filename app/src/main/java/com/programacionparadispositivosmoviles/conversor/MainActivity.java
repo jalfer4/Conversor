@@ -10,9 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private  static  final float precioDolarPeso = 54.94f;
+    private  static  final float precioDolarPeso = 55.93f;
     private  static  final float precioDolarEuro = 0.91f;
-    private  static  final float precioEuroPeso = 61.40f;
+    private  static  final float precioEuroPeso = 61.72f;
     private  static  final float precioEuroDolar = 1.10f;
     private EditText iDolar;
     private EditText iEuro;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         switch (iRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rbDolar:
                 if ((iDolarText.isEmpty() && iEuroText.isEmpty()) || (iEuroText.equals(".")) || (iDolarText.equals(".")) ){
-                    Toast.makeText(this,"Debe algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Debe ingresar algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
 
                 }else
                 {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.rbEuro:
 
                 if ((iDolarText.isEmpty() && iEuroText.isEmpty()) || (iEuroText.equals(".")) || (iDolarText.equals("."))){
-                    Toast.makeText(this,"Debe algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Debe ingresar algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
                 }else{
                 if (iDolarText.isEmpty()){
 
@@ -71,21 +71,15 @@ public class MainActivity extends AppCompatActivity {
 
                 }else
                 {
-                    if (iEuroText.isEmpty()){
-                        Toast.makeText(this,"Debe algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
-                    }else{
-
                         calculo = Float.valueOf(iDolarText)  * precioDolarEuro;
                         iResultado.setText( String.valueOf(calculo) );
                         itvCambioA.setText("Cambio a " + String.valueOf(precioDolarEuro));
-                    }
-
                 }}
                 break;
             case R.id.rbPeso:
 
                 if ((iDolarText.isEmpty() && iEuroText.isEmpty())  || (iEuroText.equals(".")) || (iDolarText.equals("."))){
-                    Toast.makeText(this,"Debe algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Debe ingresar algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
 
 
 
@@ -97,20 +91,16 @@ public class MainActivity extends AppCompatActivity {
                         itvCambioA.setText("Cambio a " + String.valueOf(precioEuroPeso));
 
                     } else {
-                        if (iEuroText.isEmpty()) {
-                            Toast.makeText(this, "Debe algun valor de Dolar o Euro", Toast.LENGTH_LONG).show();
-                        } else {
+
                             calculo = Float.valueOf(iDolarText) * precioDolarPeso;
                             iResultado.setText(String.valueOf(calculo));
                             itvCambioA.setText("Cambio a " + String.valueOf(precioDolarPeso));
-
-                        }
-
-                    }
+ }
                 }
                 break;
+            default:
+                Toast.makeText(this,"Debe seleccionar una moneda de cambio",Toast.LENGTH_LONG).show();
                    }
-
 
 
 
