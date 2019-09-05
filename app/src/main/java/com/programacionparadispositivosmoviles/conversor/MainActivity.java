@@ -98,6 +98,30 @@ public class MainActivity extends AppCompatActivity {
  }
                 }
                 break;
+
+            case R.id.rbEuroPeso:
+
+                if ((iDolarText.isEmpty() && iEuroText.isEmpty())  || (iEuroText.equals(".")) || (iDolarText.equals("."))){
+                    Toast.makeText(this,"Debe ingresar algun valor de Dolar o Euro",Toast.LENGTH_LONG).show();
+
+
+
+                }else {
+                    if (iDolarText.isEmpty()) {
+
+                        calculo = Float.valueOf(iEuroText) * precioEuroPeso;
+                        iResultado.setText(String.valueOf(calculo));
+                        itvCambioA.setText("Cambio a " + String.valueOf(precioEuroPeso));
+
+                    } else {
+
+                        calculo = Float.valueOf(iDolarText) * precioDolarPeso;
+                        iResultado.setText(String.valueOf(calculo));
+                        itvCambioA.setText("Cambio a " + String.valueOf(precioDolarPeso));
+                    }
+                }
+                break;
+
             default:
                 Toast.makeText(this,"Debe seleccionar una moneda de cambio",Toast.LENGTH_LONG).show();
                    }
@@ -108,5 +132,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void activarDolar(View v){
+
+        iDolar = (EditText) findViewById(R.id.etDolares) ;
+        iEuro = (EditText) findViewById(R.id.etEuros) ;
+        iEuro.setText("");
+        iEuro.setEnabled(false);
+        iDolar.setEnabled(true);
+    }
+
+    public void activarEuro(View v){
+
+        iEuro = (EditText) findViewById(R.id.etEuros) ;
+        iDolar = (EditText) findViewById(R.id.etDolares) ;
+        iDolar.setText("");
+        iEuro.setEnabled(true);
+        iDolar.setEnabled(false);
+    }
 
 }
